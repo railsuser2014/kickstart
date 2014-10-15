@@ -11,7 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015041222) do
+ActiveRecord::Schema.define(version: 20141015082327) do
+
+  create_table "comments", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pledges", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.decimal  "amount"
+    t.text     "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.boolean  "active"
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "projects", force: true do |t|
     t.string   "title"
@@ -31,6 +59,7 @@ ActiveRecord::Schema.define(version: 20141015041222) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
   end
 
 end

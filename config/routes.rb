@@ -1,20 +1,28 @@
 Rails.application.routes.draw do
   
-  get 'session/create'
-
-  get 'session/destroy'
+  #get 'post/create'
+  #get 'post/index'
+  #get 'post/new'
+  #get 'post/destroy'
+  #get 'pledge/create'
+  #get 'pledge/index'
+  #get 'pledge/new'
+  #get 'pledge/destroy'
 
   resources :users
 
-  resources :projects
+  resources :projects do #, :only => [] do 
+    resources :posts
+    resources :pledges
+  end
 
   controller :sessions do
     get  'login' => :new
     post 'login' => :create
     delete 'logout' => :destroy
   end
-   get "sessions/create"
-  get "sessions/destroy"
+  #get "sessions/create"
+  #get "sessions/destroy"
   
   
   root  :to => "application#index"

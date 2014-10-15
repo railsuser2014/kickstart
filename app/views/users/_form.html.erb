@@ -1,8 +1,12 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  User Sign Up
+  </div>
+   <div class="panel-body">
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
       <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -15,6 +19,12 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+   
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+     
   <div class="field">
     <%= f.label :password %><br>
     <%= f.password_field :password %>
@@ -29,3 +39,8 @@
     <%= f.submit %>
   </div>
 <% end %>
+  </div>
+   <div class="panel-footer">
+  </div>
+</div>
+
