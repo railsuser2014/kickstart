@@ -4,10 +4,9 @@ class PostsController < ApplicationController
  
   def create
     @post = @project.posts.build(posts_params)
-    @post.user_id = params[:user_id]
-    
+    @post.user_id = params[:user_id]    
     if @post.save
-      redirect_to @project :notice => "posted successfully"
+      redirect_to @project, :notice => "posted successfully"
     end
   end
 

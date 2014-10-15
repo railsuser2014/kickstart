@@ -34,6 +34,56 @@
   <strong>Description:</strong>
   <%= @project.description %>
 </p>
+<hr/>
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <h4>Project Post </h4>
+  <div class="well">
+    <% if @project.posts.count > 0 %>
+    <ul id="posts">
+  <% @project.posts.each do | p |  %>
+  <li> <%= p.content %>
+  <% end %>
+  </ul>
+  <% end %>
+  </div>
+    <%= render '/posts/form' %> 
+</div>
+  <div class="col-xs-12 col-sm-6">
+    <h4>Project Pledge </h4>
+   <div class="well">    
+    <ul id="pledges">
+      <% @project.pledges.each do | pl |  %>
+      <li> <b><%= pl.amount %> </b>  <%=pl.desc %>
+        <% end %>
+      </ul>
+     <%= render '/pledges/form' %>
+  </div>
+  </div>
+</div>
+<hr/>
+
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+
+
+
+<div class="modal fade" id="new_person_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- link_to 'New Person', '#new_person_modal', 'data-toggle' => 'modal' -->
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Create new person</h4>
+      </div>
+      <div class="modal-body">
+        <%# Render the new person form (passing modal => true to enable remote => true) %>
+  <%= render '/pledges/form', modal: true %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

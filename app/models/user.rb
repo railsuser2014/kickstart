@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :comments
   has_many :pledges
+ 
   
   
   after_destroy :ensure_an_admin_remains
